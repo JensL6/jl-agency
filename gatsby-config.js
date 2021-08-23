@@ -1,9 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
+    title: `JL-Agency`,
+    description: `Belgium based artist agency.`,
     author: `@gatsbyjs`,
-    siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -33,5 +32,23 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
+    {
+      resolve: "gatsby-source-graphql",
+      options: 
+      {
+        typeName: "WPGraphql",
+        fieldName: "wpcontent",
+        url: "http://herexamen-cms.local/graphql",
+      },
+    },
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: 
+      {
+        fonts: [`Roboto`, `Oswald`],
+        display: "swap",
+      },
+    }, 
+    `gatsby-plugin-styled-components`,
   ],
 }
