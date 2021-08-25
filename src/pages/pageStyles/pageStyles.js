@@ -1,6 +1,6 @@
-import styled from "styled-components"
-import Img from "gatsby-image"
 import { Link } from "gatsby"
+import Img from "gatsby-image"
+import styled from "styled-components"
 import { COLORS, FONT_FAMILIES, MEDIA_QUERIES } from "../../constants"
 
 export const Wrapper = styled.div`

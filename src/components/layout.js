@@ -1,18 +1,11 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.com/docs/use-static-query/
- */
-
- import React, { useState } from "react"
- import PropTypes from "prop-types"
- import { useStaticQuery, graphql } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
+import PropTypes from "prop-types"
+import React, { useState } from "react"
+import Hamburger from "./header/Hamburger"
+import Header from "./header/Header"
+import OverlayMenu from "./header/OverlayMenu"
+import "./layout.css"
  
- import Header from "./header/Header"
- import Hamburger from "./header/Hamburger"
- import OverlayMenu from "./header/OverlayMenu"
- import "./layout.css"
  
  const Layout = ({ children }) => {
    const [menuOpen, setMenuOpen] = useState(false)

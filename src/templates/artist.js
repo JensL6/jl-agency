@@ -1,8 +1,8 @@
-import React from "react"
 import { graphql } from "gatsby"
+import React from "react"
 import Layout from "../components/Layout"
-import SEO from "../components/Seo"
-import { Wrapper, Image } from "./templateStyles/artistStyles"
+import Seo from "../components/Seo"
+import { Image, Wrapper } from "./templateStyles/artistStyles"
 
 const ArtistTemplate = ({
   data: {
@@ -19,7 +19,7 @@ const ArtistTemplate = ({
 
   return (
     <Layout>
-      <SEO title="Artist" />
+      <Seo title="Artist" />
       <Wrapper>
         <div className="artist-container">
           <div className="artist-image">

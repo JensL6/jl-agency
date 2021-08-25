@@ -1,10 +1,7 @@
+import { graphql, Link, useStaticQuery } from "gatsby"
 import React from "react"
-import { useStaticQuery, graphql, Link } from "gatsby"
 import {
-  OverlayWrapper,
-  Image,
-  CloseButton,
-  MenuList,
+  CloseButton, Image, MenuList, OverlayWrapper
 } from "./headerStyles/headerStyles"
 
 const OverlayMenu = ({ handleOverlayMenu, menuOpen }) => {

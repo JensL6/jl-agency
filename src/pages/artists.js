@@ -1,16 +1,13 @@
+import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
-
 import Layout from "../components/Layout"
 import SEO from "../components/Seo"
-import {
-  Wrapper,
-  Image,
-  BottomEdgeDown,
-  BottomEdgeUp,
-  Artist,
-} from "./pageStyles/pageStyles"
 import { COLORS } from "../constants"
+import {
+  Artist, BottomEdgeDown,
+  BottomEdgeUp, Image, Wrapper
+} from "./pageStyles/pageStyles"
+
 
 const ArtistsPage = () => {
   const {
