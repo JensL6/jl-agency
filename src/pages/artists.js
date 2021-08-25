@@ -1,7 +1,7 @@
 import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
 import Layout from "../components/Layout"
-import SEO from "../components/Seo"
+import Seo from "../components/Seo"
 import { COLORS } from "../constants"
 import {
   Artist, BottomEdgeDown,
@@ -65,7 +65,7 @@ const ArtistsPage = () => {
 
   return (
     <Layout>
-      <SEO title="Artists" />
+      <Seo title="Artists" />
       <Wrapper artistsColor={COLORS.BLACK} descriptionColor={COLORS.SECONDARY}>
         <div className="banner">
           <Image
