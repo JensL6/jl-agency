@@ -31,7 +31,7 @@ const Header = ({ siteTitle }) => {
   `)
   return <HeaderWrapper>
     <Link to="/">
-        <Image alt="logo artist agency" fixed={logo.childImageSharp.fixed} />
+        <Image alt="logo car motive" fixed={logo.childImageSharp.fixed} />
       </Link>
     <Menu menuItems={menuItems.edges}/>
   </HeaderWrapper>

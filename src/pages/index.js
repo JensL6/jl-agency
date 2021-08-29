@@ -8,8 +8,8 @@ import {
   Image,
   BottomEdgeDown,
   BottomEdgeUp,
-  Artist,
-} from "./pageStyles/pageStyles"
+  Car,
+} from "../pageStyles"
 import { COLORS } from "../constants"
 
 const IndexPage = () => {
@@ -18,7 +18,7 @@ const IndexPage = () => {
       page: {
         homeMeta: {
           homePageDescription,
-          homePageFeaturedArtists,
+          homePageFeaturedCars,
           homePageHeaderDescription,
           homePageHeaderPicture,
           homePageHeaderTitle,
@@ -44,19 +44,19 @@ const IndexPage = () => {
                 }
               }
             }
-            homePageFeaturedArtists {
-              ... on WPGraphql_Artist {
+            homePageFeaturedCars {
+              ... on WPGraphql_Car {
                 slug
-                artist {
-                  artistName
-                  firstName
-                  lastName
+                car {
+                  brand
+                  model
+                  country
                   profile {
                     altText
                     sourceUrl
                     imageFile {
                       childImageSharp {
-                        fluid(quality: 50, grayscale: true) {
+                        fluid(quality: 100, grayscale: true) {
                           ...GatsbyImageSharpFluid_withWebp
                         }
                       }
@@ -90,22 +90,22 @@ const IndexPage = () => {
           <p>{homePageDescription}</p>
           <BottomEdgeUp color={COLORS.PRIMARY} />
         </div>
-        <div className="artists">
-          <h2>Featured Artists</h2>
-          <div className="artist-items">
-            {homePageFeaturedArtists.map(({ artist, slug }) => (
-              <Artist key={slug} to={`/${slug}`}>
+        <div className="cars">
+          <h2>Featured Cars</h2>
+          <div className="car-items">
+            {homePageFeaturedCars.map(({ car, slug }) => (
+              <Car key={slug} to={`/${slug}`}>
                 <Image
-                  fluid={artist.profile.imageFile.childImageSharp.fluid}
-                  alt={artist.profile.altText}
+                  fluid={car.profile.imageFile.childImageSharp.fluid}
+                  alt={car.profile.altText}
                 />
-                <div className="artist-info">
+                <div className="car-info">
                   <p>
-                    {artist.firstName} {artist.lastName}
+                    {car.brand} {car.model}
                   </p>
-                  <p>{artist.artistName}</p>
+                  <p>{car.locale}</p>
                 </div>
-              </Artist>
+              </Car>
             ))}
           </div>
         </div>

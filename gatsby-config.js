@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `JL-Agency`,
-    description: `Belgium based artist agency.`,
+    description: `Belgium based motive`,
     author: `@gatsbyjs`,
   },
   plugins: [

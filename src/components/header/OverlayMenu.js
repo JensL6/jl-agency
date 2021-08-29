@@ -37,7 +37,7 @@ const OverlayMenu = ({ handleOverlayMenu, menuOpen }) => {
           <CloseButton onClick={handleOverlayMenu}>X</CloseButton>
           <Link to="/" style={{ marginBottom: "1.5rem" }}>
             <Image
-              alt="logo artist agency obi"
+              alt="logo car motive"
               fixed={logo.childImageSharp.fixed}
             />
           </Link>

@@ -2,30 +2,30 @@ import { graphql } from "gatsby"
 import React from "react"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import { Image, Wrapper } from "./templateStyles/artistStyles"
+import { Image, Wrapper } from "./templateStyles/carStyles"
 
-const ArtistTemplate = ({
+const CarTemplate = ({
   data: {
     wpcontent: {
-      artist: {
-        artist,
+      car: {
+        car,
         roles: { edges: roles },
       },
     },
   },
 }) => {
-  const { picture1, picture2, picture3 } = artist.pictures
+  const { picture1, picture2, picture3 } = car.pictures
   const pictures = [picture1, picture2, picture3]
 
   return (
     <Layout>
-      <Seo title="Artist" />
+      <Seo title="Car" />
       <Wrapper>
-        <div className="artist-container">
-          <div className="artist-image">
+        <div className="car-container">
+          <div className="car-image">
             <Image
-              fluid={artist.profile.imageFile.childImageSharp.fluid}
-              alt={artist.profile.altText}
+              fluid={car.profile.imageFile.childImageSharp.fluid}
+              alt={car.profile.altText}
             />
             <div className="roles">
               {roles.map(({ node: role }) => (
@@ -35,35 +35,32 @@ const ArtistTemplate = ({
               ))}
             </div>
           </div>
-          <div className="artist-info">
+          <div className="car-info">
             <h2>
-              {artist.firstName} {artist.lastName}
+              {car.brand} {car.model}
             </h2>
-            {artist.artistName ? (
+            {car.country ? (
               <h3>
-                <span>{artist.artistName} -</span> <span>{artist.locale}</span>
+                <span>{car.country} -</span> <span>{car.city}</span>
               </h3>
             ) : (
-              <h3>{artist.locale}</h3>
+              <h3>{car.city}</h3>
             )}
-            <p className="description">{artist.description}</p>
+            <p className="description">{car.description}</p>
             <p className="info">
-              <strong>Email:</strong> {artist.email}
+              <strong>Make year:</strong> {car.year}
             </p>
             <p className="info">
-              <strong>Phone:</strong> {artist.phone}
+              <strong>Country:</strong> {car.country}
             </p>
             <p className="info">
-              <strong>Height:</strong> {artist.height}
-            </p>
-            <p className="info">
-              <strong>Shoe size:</strong> {artist.shoeSize}
+              <strong>City:</strong> {car.city}
             </p>
           </div>
         </div>
-        <div className="artist-pictures">
+        <div className="car-pictures">
           {pictures.map((picture, i) => (
-            <div key={i} className="artist-picture">
+            <div key={i} className="car-picture">
               <Image
                 fluid={picture.imageFile.childImageSharp.fluid}
                 alt={picture.altText}
@@ -76,12 +73,12 @@ const ArtistTemplate = ({
   )
 }
 
-export default ArtistTemplate
+export default CarTemplate
 
 export const pageQuery = graphql`
   query($id: ID!) {
     wpcontent {
-      artist(id: $id, idType: ID) {
+      car(id: $id, idType: ID) {
         roles {
           edges {
             node {
@@ -89,21 +86,18 @@ export const pageQuery = graphql`
             }
           }
         }
-        artist {
-          artistName
+        car {
+          country
           description
-          email
-          firstName
-          height
-          lastName
-          locale
-          phone
-          shoeSize
+          brand
+          model
+          city
+          year
           profile {
             sourceUrl
             imageFile {
               childImageSharp {
-                fluid(quality: 75) {
+                fluid(quality: 100) {
                   ...GatsbyImageSharpFluid_withWebp
                 }
               }
@@ -115,7 +109,7 @@ export const pageQuery = graphql`
               sourceUrl
               imageFile {
                 childImageSharp {
-                  fluid(quality: 75) {
+                  fluid(quality: 100) {
                     ...GatsbyImageSharpFluid_withWebp
                   }
                 }
@@ -126,7 +120,7 @@ export const pageQuery = graphql`
               sourceUrl
               imageFile {
                 childImageSharp {
-                  fluid(quality: 75) {
+                  fluid(quality: 100) {
                     ...GatsbyImageSharpFluid_withWebp
                   }
                 }
@@ -137,7 +131,7 @@ export const pageQuery = graphql`
               sourceUrl
               imageFile {
                 childImageSharp {
-                  fluid(quality: 75) {
+                  fluid(quality: 100) {
                     ...GatsbyImageSharpFluid_withWebp
                   }
                 }

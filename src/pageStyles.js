@@ -1,7 +1,7 @@
 import { Link } from "gatsby"
 import Img from "gatsby-image"
 import styled from "styled-components"
-import { COLORS, FONT_FAMILIES, MEDIA_QUERIES } from "../../constants"
+import { COLORS, FONT_FAMILIES, MEDIA_QUERIES } from "./constants"
 
 export const Wrapper = styled.div`
   .banner {
@@ -126,15 +126,15 @@ export const Wrapper = styled.div`
     }
   }
 
-  .artists {
+  .cars {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
     padding: 2rem 5%;
-    background-color: ${({ artistsColor = COLORS.PRIMARY }) =>
-      `${artistsColor}`};
+    background-color: ${({ carsColor = COLORS.PRIMARY }) =>
+      `${carsColor}`};
 
     h2 {
       font-family: ${FONT_FAMILIES.TITLE};
@@ -149,7 +149,7 @@ export const Wrapper = styled.div`
       }
     }
 
-    .artist-items {
+    .car-items {
       display: flex;
       flex-direction: row;
       justify-content: center;
@@ -160,7 +160,7 @@ export const Wrapper = styled.div`
   }
 `
 
-export const Artist = styled(Link)`
+export const Car = styled(Link)`
   display: flex;
   position: relative;
   width: 22vw;
@@ -178,7 +178,7 @@ export const Artist = styled(Link)`
   &:hover {
     transform: scale(1.05);
 
-    .artist-info {
+    .car-info {
       height: 100%;
       background-color: ${COLORS.TERTIARY + "c0"};
 
@@ -188,7 +188,7 @@ export const Artist = styled(Link)`
     }
   }
 
-  .artist-info {
+  .car-info {
     display: flex;
     flex-direction: column;
     position: absolute;

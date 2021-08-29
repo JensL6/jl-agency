@@ -4,26 +4,26 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import { COLORS } from "../constants"
 import {
-  Artist, BottomEdgeDown,
+  Car, BottomEdgeDown,
   BottomEdgeUp, Image, Wrapper
-} from "./pageStyles/pageStyles"
+} from "../pageStyles"
 
 
-const ArtistsPage = () => {
+const CarsPage = () => {
   const {
     wpcontent: {
       page: {
-        artistsMeta: { artistsPageDescription, artistsPageHeaderPicture },
+        carsMeta: { carsPageDescription, carsPageHeaderPicture },
       },
-      artists: { edges: artists },
+      cars: { edges: cars },
     },
   } = useStaticQuery(graphql`
     query {
       wpcontent {
-        page(id: "artists", idType: URI) {
-          artistsMeta {
-            artistsPageDescription
-            artistsPageHeaderPicture {
+        page(id: "cars", idType: URI) {
+          carsMeta {
+            carsPageDescription
+            carsPageHeaderPicture {
               sourceUrl
               imageFile {
                 childImageSharp {
@@ -36,19 +36,19 @@ const ArtistsPage = () => {
             }
           }
         }
-        artists {
+        cars {
           edges {
             node {
-              artist {
-                firstName
-                lastName
-                artistName
+              car {
+                brand
+                model
+                country
                 profile {
                   altText
                   sourceUrl
                   imageFile {
                     childImageSharp {
-                      fluid(quality: 50, grayscale: true) {
+                      fluid(quality: 100) {
                         ...GatsbyImageSharpFluid_withWebp
                       }
                     }
@@ -65,36 +65,36 @@ const ArtistsPage = () => {
 
   return (
     <Layout>
-      <Seo title="Artists" />
-      <Wrapper artistsColor={COLORS.BLACK} descriptionColor={COLORS.SECONDARY}>
+      <Seo title="Cars" />
+      <Wrapper carsColor={COLORS.BLACK} descriptionColor={COLORS.SECONDARY}>
         <div className="banner">
           <Image
-            fluid={artistsPageHeaderPicture.imageFile.childImageSharp.fluid}
-            alt={artistsPageHeaderPicture.altText}
+            fluid={carsPageHeaderPicture.imageFile.childImageSharp.fluid}
+            alt={carsPageHeaderPicture.altText}
           />
           <BottomEdgeDown color={COLORS.SECONDARY} />
         </div>
         <div className="description">
           <h2>We are JL-Agency</h2>
-          <p>{artistsPageDescription}</p>
+          <p>{carsPageDescription}</p>
           <BottomEdgeUp color={COLORS.BLACK} />
         </div>
-        <div className="artists">
-          <h2>Our Artists</h2>
-          <div className="artist-items">
-            {artists.map(({ node: { artist, slug } }) => (
-              <Artist to={`/${slug}`} key={slug}>
+        <div className="cars">
+          <h2>Our Cars</h2>
+          <div className="car-items">
+            {cars.map(({ node: { car, slug } }) => (
+              <Car to={`/${slug}`} key={slug}>
                 <Image
-                  fluid={artist.profile.imageFile.childImageSharp.fluid}
-                  alt={artist.profile.altText}
+                  fluid={car.profile.imageFile.childImageSharp.fluid}
+                  alt={car.profile.altText}
                 />
-                <div className="artist-info">
+                <div className="car-info">
                   <p>
-                    {artist.firstName} {artist.lastName}
+                    {car.brand} {car.model}
                   </p>
-                  {artist.artistName && <p>{artist.artistName}</p>}
+                  {car.country && <p>{car.country}</p>}
                 </div>
-              </Artist>
+              </Car>
             ))}
           </div>
         </div>
@@ -103,4 +103,4 @@ const ArtistsPage = () => {
   )
 }
 
-export default ArtistsPage
+export default CarsPage
